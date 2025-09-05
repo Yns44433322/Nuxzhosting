@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murlog by Nadreth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #000000 0%, #1e40af 50%, #ffffff 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .slide-up {
+            animation: slideUp 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .glow-button {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .section-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="min-h-screen flex items-center justify-center px-4">
+        <div class="text-center fade-in">
+            <h1 class="text-6xl md:text-8xl font-bold text-white mb-6">
+                Welcome
+            </h1>
+            <h2 class="text-4xl md:text-6xl font-semibold text-white mb-4">
+                Murlog
+            </h2>
+            <p class="text-xl md:text-2xl text-blue-100 font-light mb-12">
+                by <span class="font-medium text-white">Nadreth</span>
+            </p>
+            <button onclick="showPasswordScreen()" class="glow-button bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-all duration-300">
+                Mulai
+            </button>
+        </div>
+    </div>
+
+    <!-- Password Screen -->
+    <div id="passwordScreen" class="min-h-screen flex items-center justify-center px-4 hidden">
+        <div class="section-card rounded-2xl p-8 max-w-md w-full text-center slide-up">
+            <h2 class="text-3xl font-bold text-white mb-6">Masukkan Password</h2>
+            <input type="password" id="passwordInput" placeholder="Password" class="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:border-white/60 mb-6">
+            <button onclick="checkPassword()" class="w-full glow-button bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300">
+                Login
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Screen -->
+    <div id="mainScreen" class="min-h-screen py-12 px-4 hidden">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-5xl font-bold text-white text-center mb-12 fade-in">Murlog Resources</h1>
+            
+            <!-- Mentahan Section -->
+            <div class="mb-12 slide-up">
+                <h2 class="text-3xl font-bold text-white mb-6 text-center">📁 MENTAHAN</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <button onclick="openLink('https://drive.google.com/folderview?id=15ad4GFpmHV_kAG9kKzup8sRVmetKMPCs')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">MENTAHAN 1</h3>
+                        <p class="text-blue-200">Klik untuk akses</p>
+                    </button>
+                    <button onclick="openLink('https://drive.google.com/drive/folders/1OhJapR9lzg60-DBLYSSyxVY16C9v7za8')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">MENTAHAN 2</h3>
+                        <p class="text-blue-200">Klik untuk akses</p>
+                    </button>
+                    <button onclick="openLink('https://drive.google.com/folderview?id=1ZBF3E7kU2Hq9ddD9pbxMLPAnOT-SRunA')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">MENTAHAN 3</h3>
+                        <p class="text-blue-200">Klik untuk akses</p>
+                    </button>
+                    <button onclick="openLink('https://drive.google.com/drive/folders/1rMblQsfnuT2wz0PqYsU6QnJCaZLedZ-h')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">MENTAHAN 4</h3>
+                        <p class="text-blue-200">Klik untuk akses</p>
+                    </button>
+                    <button onclick="openLink('https://photos.app.goo.gl/Wq4uMmnd19y1bfAx5')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">VECTOR</h3>
+                        <p class="text-blue-200">Klik untuk akses</p>
+                    </button>
+                    <button onclick="openLink('https://photos.app.goo.gl/Y9xBmKv4vE53gStT7')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">MENTAHAN ATTACKER</h3>
+                        <p class="text-blue-200">Klik untuk akses</p>
+                    </button>
+                    <button onclick="openLink('https://photos.app.goo.gl/xCbNj4rzcttZz6zz9')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">MENTAHAN EFEK LOGO</h3>
+                        <p class="text-blue-200">Klik untuk akses</p>
+                    </button>
+                    <button onclick="openLink('https://drive.google.com/drive/folders/1xN7pKHy4uefMQX_Zw-G1uw5vj03oWNly')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">PAPER ASSET</h3>
+                        <p class="text-blue-200">Klik untuk akses</p>
+                    </button>
+                    <button onclick="openLink('https://drive.google.com/drive/folders/12-At1KPcdX2A-_nhoYUgxVBs81OKPdmg')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">UI PACK</h3>
+                        <p class="text-blue-200">Klik untuk akses</p>
+                    </button>
+                    <button onclick="openLink('https://drive.google.com/drive/u/0/mobile/folders/1i4DXVsBIVxwL4Ha99m5hCz60gv3PvXtz')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">CANDY ELEMENT</h3>
+                        <p class="text-blue-200">Klik untuk akses</p>
+                    </button>
+                    <button onclick="openLink('https://drive.google.com/drive/folders/1EjeBg4l22fZc_wzzNotKrj-ra8hDSgoc')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">MENTAHAN GFX</h3>
+                        <p class="text-blue-200">Klik untuk akses</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- APK Section -->
+            <div class="mb-12 slide-up">
+                <h2 class="text-3xl font-bold text-white mb-6 text-center">📱 APK</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <button onclick="openLink('https://www.mediafire.com/download/3olqkvrmmeuowxq')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">PIXELLAB ARMY</h3>
+                        <p class="text-blue-200">PW: subrek</p>
+                    </button>
+                    <button onclick="openLink('https://www.mediafire.com/download/vu6gcjgjni09vki')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">PIXELLAB PURPLE</h3>
+                        <p class="text-gray-300">PW: (0708)</p>
+                    </button>
+                    <button onclick="openLink('https://www.mediafire.com/download/qx51hyu9x2ovj1y')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">PIXELLAB NEON</h3>
+                        <p class="text-gray-300">PW: like</p>
+                    </button>
+                    <button onclick="openLink('https://www.mediafire.com/download/bha2etexmvkvola')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">PIXELLAB RED</h3>
+                        <p class="text-gray-300">PW: MERAH</p>
+                    </button>
+                    <button onclick="openLink('https://www.mediafire.com/file/hor8nogzphze1e2/Pixellab+Rog+Blue.apk/file')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">PIXELLAB ROG</h3>
+                        <p class="text-gray-300">Klik untuk download</p>
+                    </button>
+                    <button onclick="openLink('https://www.mediafire.com/file/0cmyredcrv1ps1/Pixellab_Mod_JB.apk/file')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">PIXELLAB MOD JB</h3>
+                        <p class="text-gray-300">Klik untuk download</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tutorial Section -->
+            <div class="mb-12 slide-up">
+                <h2 class="text-3xl font-bold text-white mb-6 text-center">🎓 TUTORIAL</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <button onclick="openLink('https://photos.app.goo.gl/akTZA4CFNjD6SSJo9')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">CARA BIKIN LOGO</h3>
+                        <p class="text-blue-300">Tutorial lengkap</p>
+                    </button>
+                    <button onclick="openLink('https://youtu.be/-AlxjjJmgTk')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">CARA PASANG FONT</h3>
+                        <p class="text-blue-300">Video tutorial</p>
+                    </button>
+                    <button onclick="openLink('https://youtu.be/klEid_P-Ex8?si=L--OHgaRE7Jr5sEt')" class="section-card rounded-xl p-6 text-white hover:bg-white/20 transition-all duration-300">
+                        <h3 class="text-xl font-semibold mb-2">HAPUS BACKGROUND</h3>
+                        <p class="text-blue-300">Tutorial mentahan logo</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPasswordScreen() {
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            document.getElementById('passwordScreen').classList.remove('hidden');
+            document.getElementById('passwordInput').focus();
+        }
+
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const correctPassword = 'M1386gAjvfH';
+            
+            if (password === correctPassword) {
+                document.getElementById('passwordScreen').classList.add('hidden');
+                document.getElementById('mainScreen').classList.remove('hidden');
+            } else {
+                // Redirect to Telegram with auto message
+                const telegramUrl = 'https://t.me/Nadreth?text=bang%20mau%20beli%20Murlog';
+                window.open(telegramUrl, '_blank');
+            }
+        }
+
+        function openLink(url) {
+            window.open(url, '_blank');
+        }
+
+        // Allow Enter key to submit password
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !document.getElementById('passwordScreen').classList.contains('hidden')) {
+                checkPassword();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97a54a3d0446b907',t:'MTc1NzA3MDczMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
